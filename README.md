@@ -15,7 +15,7 @@ Continuous Delivery with Feature Toggle
 	    - Feature Toggle - Branching in Code (Pros & Cons)
 	        + Continuous Integration
 	        - More Considerations of Design And Imeplementation
-	        - Risk of negative effects from
+	        - Risk of negative effects from code of pending features
 	        - More complexity and less readability in code
 	- Supplemental Technique to Continuous Delivery by Decoupling Integration from Feature Release
 
@@ -24,27 +24,31 @@ Continuous Delivery with Feature Toggle
     - CI
     - Automated Testing (Unit, Integration, Functional, Load, Stress, Endurance, Security, etc...)
 
-- Some Patterns with Feature Toggle
-	- UI (HTML, CSS, JS)
-	- Web API
-	- Data Store
 
 - Lifecycle (with Demo)
 	- Plan with Feature Toggle
 	    - Can it be avoided?
 	    - Exit Strategy
-	    - Scope, Time and Order of Delivery
+	    - Total number of live toggles
+	    - Scope and time of delivery
 
 	- Develop with Feature Toggle
+		- Naming
 	    - Refactor
-	    - Releasable Commits: Care about builds and deployments 
+	    - Releasable Commits: Care about builds and deployments
+		- Some Patterns with Feature Toggle
+			- UI (HTML, CSS, JS)
+			- Web API
+			- Data Store
 
 	- Test with Feature Toggle
 	    - Keep test for "toggle off"
-	    - Add test for "toggle on" after dev done
+	    - Add test for "toggle on"
+	    	- Unit tests
+	    	- Functional tests
 
 	- Release with Feature Toggle
-	    - Feature toggle status
+	    - Consistent status of Feature Toggles on all environments in deployment pipeline
 
 	- Retire Feature Toggle
 	    - Careful and thorough clean up
