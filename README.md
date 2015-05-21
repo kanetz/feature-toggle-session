@@ -28,7 +28,6 @@ Continuous Delivery with Feature Toggle
 	- UI (HTML, CSS, JS)
 	- Web API
 	- Data Store
-	- Cross-cutting Concerns
 
 - Lifecycle (with Demo)
 	- Plan with Feature Toggle
