@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <title></title>
 
+    <link rel="prefetch" href="images/toggle-on.png" />
+    <link rel="prefetch" href="images/toggle-off.png" />
+
     <script type="application/javascript" src="js/jquery-1.11.3.min.js"></script>
     <style>
         .onoffswitch {
@@ -53,16 +56,20 @@
             right: 0;
         }
 
-        .bulb {
-            width: 325px;
-            height: 400px;
-            background: url('images/bulb.jpg') no-repeat;
+        .onoffswitch {
+            display: inline-block;
         }
-        .bulb.off {
-            background-position: -70px -106px;
+
+        .payment {
+            width: 585px;
+            height: 195px;
+            background: url('images/feature-toggle.png') no-repeat;
+            background-size: cover;
         }
-        .bulb.on {
-            background-position: -400px -110px;
+        .payment.toggle-off {
+        }
+        .payment.toggle-on {
+            background-position: 0 -195px;
         }
     </style>
 </head>
@@ -71,14 +78,15 @@
 <script>
     $(function() {
         $('.onoffswitch-checkbox').click(function() {
-            $('.bulb').toggleClass('on').toggleClass('off');
+            $('.payment').toggleClass('toggle-on').toggleClass('toggle-off');
         });
     });
 </script>
 
-<div style="width: 600px; height: 400px; display: flex; flex-direction: row; ">
-    <div style="flex: 1; border: 1px solid white;">
-        <div class="onoffswitch">
+<div style="width: 600px; height: 270px; margin: auto; padding: 0 20px; background-color: white;">
+    <div style="height: 50px; line-height: 50px;">
+        <span style="font-size:20px; font-family: arial, sans-serif; vertical-align: middle;">feature-payment-by-debit-card:</span>
+        <div class="onoffswitch" style="display: inline-block; vertical-align: middle;">
             <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch">
             <label class="onoffswitch-label" for="myonoffswitch">
                 <span class="onoffswitch-inner"></span>
@@ -86,7 +94,8 @@
             </label>
         </div>
     </div>
-    <div class="bulb off" style="flex: 1; border: 1px solid white;"></div>
+    <hr />
+    <div class="payment toggle-off" style=""></div>
 </div>
 
 </body>

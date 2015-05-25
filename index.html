@@ -39,68 +39,104 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h2><p>Continuous Delivery</p>with<p>Feature Toggle</p></h2>
+					<h2>Continuous Delivery<br/>with<br/>Feature Toggle</h2>
 					<p>
 						<small>Tong Zhang & Shiwei Zhou</small>
 					</p>
 				</section>
 
                 <section>
-                    <section>
-                        <h3>What is Feature Toggle?</h3>
-                        <iframe src="demo.html" width="600" height="400" ></iframe>
-                    </section>
-                    <section>
-                        <h3>What is Feature Toggle?</h3>
-                        <img src="images/featureToggle.png" alt="feature toggle">
-                    </section>
-                    <section>
-                        <h3>What is Feature Toggle?</h3>
-                        <blockquote>
-                            A feature toggle, is a technique in software development that attempts to provide an alternative to maintaining multiple source-code branches (known as feature branches).
-                        </blockquote>
-                    </section>
-                </section>
-
-
-                <section>
-                    <section>
-                        <h3>How to deal with pending features that take longer than a single release cycle?</h3>
-                    </section>
-
-                    <section>
-                        <h3>Feature Branch - Branching in SCM</h3>
-                        <iframe src="feature-branch.html" width="1000"></iframe>
-                        <ul>
-                            <li>Better Isolation</li>
-                            <li>Deferred merge and integration => Merge Hell</li>
-                            <li>Chilling effect on refactoring</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Feature Toggle - Branching in Code</h3>
-                        <ul>
-                            <li>Continuous Integration</li>
-                            <li>Risk of negative effects from pending features</li>
-                            <li>More complexity and less readability in code</li>
-                        </ul>
-                    </section>
+                    <h3>How to deal with <br/>pending features<br/>that take longer than<br/>a single release cycle?</h3>
                 </section>
 
                 <section>
-                    <h3>Prerequisites</h3>
+                    <h3>Feature Branch - Branching in SCM</h3>
+                    <iframe src="feature-branch.html" width="1000"></iframe>
                     <ul>
-                        <li>CI</li>
-                        <li>Automated Testing (unit, integration, functional, load, stress, endurance, security, etc...)</li>
+                        <li>Better Isolation</li>
+                        <li>Deferred merge and integration => Merge Hell</li>
+                        <li>Chilling effect on refactoring</li>
+                        <li>Difficult to share code across branches</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>Some Patterns with Feature Toggle</h3>
+                    <h3>It is NOT Continuous Integration!</h3>
+                    <h3>Continuous Delivery</h3>
+                </section>
+
+                <section>
+                    <h3>How to do<br/>Continuous Delivery<br/>in this scenario?</h3>
+                    <blockquote>With Feature Toggles</blockquote>
+                </section>
+
+                <section>
+                    <h3>What is Feature Toggle?</h3>
+                    <iframe src="demo.html" width="600" height="270"></iframe>
+                </section>
+
+                <section>
+                    <h3>What is Feature Toggle?</h3>
+                    <p><span class="fragment">A conditional logic</span><br/>
+                    <span class="fragment">that hides certain execution path.</span></p>
+                </section>
+
+                <section>
+                    <section>
+                        <h3>Types of Feature Toggle</h3>
+                        <ul>
+                            <li>Release toggles</li>
+                            <li>Business toggles</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Release Toggle</h3>
+                        <ul>
+                            <li>To hide incomplete feature</li>
+                            <li>Short lived</li>
+                            <li>Removed as soon as feature is ready</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h3>Business Toggle</h3>
+                        <ul>
+                            <li>To enable A / B testing</li>
+                            <li>Release feature to certain groups of people to get early feedback</li>
+                            <li>Could be enabled or disabled on the fly</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Who are using Feature Toggles?</h3>
+                    <img src="images/river.png" />
+                </section>
+
+                <section>
+                    <h3>Some Patterns with (or without) Feature Toggle</h3>
                     <ul>
-                        <li>UI (HTML, CSS, JS)</li>
-                        <li>Web API</li>
-                        <li>Data Store</li>
+                        <li>
+                            Front End
+                            <ul>
+                                <li>For UI component: Feature Toggle the view element.</li>
+                                <li>For UI logic: Feature Toggle by abstraction.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            Web API
+                            <ul>
+                                <li>For APIs that is not public facing: No Feature Toggle needed.</li>
+                                <li>For APIs that is public facing: Feature Toggle the endpoint.</li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            Data Store
+                            <ul>
+                                <li>For new models or tables: No Feature Toggle needed.</li>
+                                <li>For new models or tables: No Feature Toggle needed.</li>
+                            </ul>
+                        </li>
                     </ul>
                 </section>
 
@@ -156,11 +192,10 @@
                     <h3>Tips And Tricks</h3>
                     <ul>
                         <li>Minimize conditional logic to the UI and to entry points in the system.</li>
-                        <li>Keep it alive as short as possible.</li>
+                        <li>Keep it alive as short as possible and remember to clean up.</li>
                         <li>Make them independent.</li>
                         <li>Control the total number.</li>
                         <li>Control the scope.</li>
-                        <li>Design</li>
                         <li>Choose name wisely.</li>
                     </ul>
                 </section>
