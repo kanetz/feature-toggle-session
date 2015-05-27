@@ -61,13 +61,19 @@
                 </section>
 
                 <section>
-                    <h3>It is NOT Continuous Integration!</h3>
-                    <h3>Continuous Delivery</h3>
+                    <h3>It is NOT Continuous Integration,</h3>
+                    <h3>hence NOT Continuous Delivery.</h3>
                 </section>
 
                 <section>
-                    <h3>How to do<br/>Continuous Delivery<br/>in this scenario?</h3>
-                    <blockquote>With Feature Toggles</blockquote>
+                    <h3>Solution 1: Make them small!</h3>
+                    <img src="" alt="graph" />
+                </section>
+
+                <section>
+                    <h3>Solution 2: Integrate them but hide them!</h3>
+                    <blockquote>Continuous Delivery with Feature Toggles</blockquote>
+                    <img src="" alt="graph" />
                 </section>
 
                 <section>
@@ -113,7 +119,7 @@
                 </section>
 
                 <section>
-                    <h3>Some Patterns with (or without) Feature Toggle</h3>
+                    <h3>Some Patterns with / without<br/>Feature Toggle</h3>
                     <ul>
                         <li>
                             Front End
@@ -122,6 +128,7 @@
                                 <li>For UI logic: Feature Toggle by abstraction.</li>
                             </ul>
                         </li>
+
                         <li>
                             Web API
                             <ul>
@@ -141,51 +148,59 @@
                 </section>
 
                 <section>
-                    <section>
-                        <h3>Lifecycle of Feature Toggles</h3>
-                        <ul>
-                            <li>Plan with Feature Toggle</li>
-                            <li>Develop with Feature Toggle</li>
-                            <li>Test with Feature Toggle</li>
-                            <li>Release with Feature Toggle</li>
-                            <li>Retire Feature Toggle</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Plan with Feature Toggle</h3>
-                        <ul>
-                            <li>Can it be avoided?</li>
-                            <li>Exit Strategy</li>
-                            <li>Scope, time and order of delivery</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Develop with Feature Toggle</h3>
-                        <ul>
-                            <li>Refactor</li>
-                            <li>Releasable commits</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Test with Feature Toggle</h3>
-                        <ul>
-                            <li>Keep testing for "toggle off" until it is retired.</li>
-                            <li>Start testing for "toggle on" after development is done.</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Release with Feature Toggle</h3>
-                        <ul>
-                            <li>Feature toggle status</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Retire Feature Toggle</h3>
-                        <ul>
-                            <li>Careful and thorough clean up</li>
-                            <li>Keep testing</li>
-                        </ul>
-                    </section>
+                    <h3>Lifecycle of Feature Toggles</h3>
+                    <ul>
+                        <li>Plan with Feature Toggle</li>
+                        <li>Develop with Feature Toggle</li>
+                        <li>Test with Feature Toggle</li>
+                        <li>Release with Feature Toggle</li>
+                        <li>Retire Feature Toggle</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Plan with Feature Toggle</h3>
+                    <ul>
+                        <li>Can it be avoided?</li>
+                        <li>Exit Strategy</li>
+                        <li>Scope and time</li>
+                    </ul>
+                    <img src="" alt="graph" />
+
+                    <aside class="notes">
+                        full functional first, continuous improvement
+                    </aside>
+                </section>
+
+                <section>
+                    <h3>Develop with Feature Toggle</h3>
+                    <ul>
+                        <li>Releasable commits</li>
+                        <li>Refactor</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Test with Feature Toggle</h3>
+                    <ul>
+                        <li>Testing for "toggle off" until it is retired. (Protection) </li>
+                        <li>Testing for "toggle on" after development is done. (Integration) </li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Release with Feature Toggle</h3>
+                    <ul>
+                        <li>Maintain Feature Toggle status</li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h3>Retire Feature Toggle</h3>
+                    <ul>
+                        <li>Careful and thorough clean up</li>
+                        <li>Keep testing</li>
+                    </ul>
                 </section>
 
                 <section>
