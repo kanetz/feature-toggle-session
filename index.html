@@ -26,6 +26,26 @@
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
 
+        <style>
+            .pros-and-cons {
+                list-style: none !important;
+            }
+            .pros:before {
+                content: '+';
+                font-family: arial, sans-serif;
+                display: inline-block;
+                width: 2em;
+                text-align: center;
+            }
+            .cons:before {
+                content: '-';
+                font-family: arial, sans-serif;
+                display: inline-block;
+                width: 2em;
+                text-align: center;
+            }
+        </style>
+
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
@@ -52,28 +72,30 @@
                 <section>
                     <h3>Feature Branch - Branching in SCM</h3>
                     <iframe src="feature-branch.html" width="1000"></iframe>
-                    <ul>
-                        <li>Better Isolation</li>
-                        <li>Deferred merge and integration => Merge Hell</li>
-                        <li>Chilling effect on refactoring</li>
-                        <li>Difficult to share code across branches</li>
+                    <ul class="pros-and-cons">
+                        <li class="pros">Good isolation</li>
+                        <li class="cons">Deferred merge and integration => Merge Hell</li>
+                        <li class="cons">Chilling effect on refactoring</li>
+                        <li class="cons">Difficult to share code across branches</li>
                     </ul>
                 </section>
 
                 <section>
-                    <h3>It is NOT Continuous Integration,</h3>
-                    <h3>hence NOT Continuous Delivery.</h3>
+                    <h3>Feature Branch - Branching in SCM</h3>
+                    <iframe src="feature-branch.html" width="1000"></iframe>
+                    <h4>It is NOT Continuous Integration,<br/>hence,<br/>difficult to do Continuous Delivery.</h4>
                 </section>
 
                 <section>
                     <h3>Solution 1: Make them small!</h3>
-                    <img src="" alt="graph" />
+                    <blockquote>"Parley!"</blockquote>
+                    <iframe src="feature-splitted.html" width="1000"></iframe>
                 </section>
 
                 <section>
-                    <h3>Solution 2: Integrate them but hide them!</h3>
+                    <h3>Solution 2: Integrate and hide!</h3>
                     <blockquote>Continuous Delivery with Feature Toggles</blockquote>
-                    <img src="" alt="graph" />
+                    <iframe src="feature-toggle.html" width="1000"></iframe>
                 </section>
 
                 <section>
@@ -83,34 +105,32 @@
 
                 <section>
                     <h3>What is Feature Toggle?</h3>
-                    <p><span class="fragment">A conditional logic</span><br/>
-                    <span class="fragment">that hides certain execution path.</span></p>
+                    <p>A conditional logic<br/>
+                    that hides certain execution path.</p>
                 </section>
 
                 <section>
-                    <section>
-                        <h3>Types of Feature Toggle</h3>
-                        <ul>
-                            <li>Release toggles</li>
-                            <li>Business toggles</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Release Toggle</h3>
-                        <ul>
-                            <li>To hide incomplete feature</li>
-                            <li>Short lived</li>
-                            <li>Removed as soon as feature is ready</li>
-                        </ul>
-                    </section>
-                    <section>
-                        <h3>Business Toggle</h3>
-                        <ul>
-                            <li>To enable A / B testing</li>
-                            <li>Release feature to certain groups of people to get early feedback</li>
-                            <li>Could be enabled or disabled on the fly</li>
-                        </ul>
-                    </section>
+                    <h3>Types of Feature Toggle</h3>
+                    <ul>
+                        <li>Release toggles</li>
+                        <li>Business toggles</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Release Toggle</h3>
+                    <ul>
+                        <li>To hide incomplete feature</li>
+                        <li>Short lived</li>
+                        <li>Removed as soon as feature is ready</li>
+                    </ul>
+                </section>
+                <section>
+                    <h3>Business Toggle</h3>
+                    <ul>
+                        <li>To enable A / B testing</li>
+                        <li>Release feature to certain groups of people to get early feedback</li>
+                        <li>Could be enabled or disabled on the fly</li>
+                    </ul>
                 </section>
 
                 <section>
@@ -120,31 +140,47 @@
 
                 <section>
                     <h3>Some Patterns with / without<br/>Feature Toggle</h3>
-                    <ul>
-                        <li>
-                            Front End
-                            <ul>
-                                <li>For UI component: Feature Toggle the view element.</li>
-                                <li>For UI logic: Feature Toggle by abstraction.</li>
-                            </ul>
-                        </li>
+                    <h4>Front end UI component - Feature Toggle the view element</h4>
+                    <pre><code data-trim class="html">
+<feature-toggle name="my-feature" when-status="on">
+    <div>new design here</div>
+</feature-toggle>
 
-                        <li>
-                            Web API
-                            <ul>
-                                <li>For APIs that is not public facing: No Feature Toggle needed.</li>
-                                <li>For APIs that is public facing: Feature Toggle the endpoint.</li>
-                            </ul>
-                        </li>
+<feature-toggle name="my-feature" when-status="off">
+    <div>original design here</div>
+</feature-toggle>
+                    </code></pre>
+                </section>
 
-                        <li>
-                            Data Store
-                            <ul>
-                                <li>For new models or tables: No Feature Toggle needed.</li>
-                                <li>For new models or tables: No Feature Toggle needed.</li>
-                            </ul>
-                        </li>
-                    </ul>
+                <section>
+                    <h3>Some Patterns with / without<br/>Feature Toggle</h3>
+                    <h4>Front end UI logic - Feature Toggle by abstraction</h4>
+                    <pre><code data-trim class="javascript">
+if(feature.get('my-feature').status === 'on') {
+    //code for new feature...
+} else {
+    //code for original behavior...
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Some Patterns with / without<br/>Feature Toggle</h3>
+                    <h4>Web API - Feature Toggle the endpoint</h4>
+                    <pre><code data-trim class="url">
+http://my-server/api
+http://my-server/api-new
+                    </code></pre>
+                    <pre><code data-trim class="javascript">
+var shouldUseNewApi = feature.get('my-feature').status === 'on';
+var url = shouldUseNewApi ? 'http://my-server/api-new' : 'http://my-server/api';
+//send request to endpoint url
+                    </code></pre>
+                </section>
+
+                <section>
+                    <h3>Some Patterns with / without<br/>Feature Toggle</h3>
+                    <h4>Data Store - No Feature Toggle needed.</h4>
                 </section>
 
                 <section>
@@ -162,10 +198,9 @@
                     <h3>Plan with Feature Toggle</h3>
                     <ul>
                         <li>Can it be avoided?</li>
-                        <li>Exit Strategy</li>
+                        <li>Exit strategy</li>
                         <li>Scope and time</li>
                     </ul>
-                    <img src="" alt="graph" />
 
                     <aside class="notes">
                         full functional first, continuous improvement
@@ -183,8 +218,8 @@
                 <section>
                     <h3>Test with Feature Toggle</h3>
                     <ul>
-                        <li>Testing for "toggle off" until it is retired. (Protection) </li>
-                        <li>Testing for "toggle on" after development is done. (Integration) </li>
+                        <li>Testing for "toggle off" until it is retired. (Protection)</li>
+                        <li>Testing for "toggle on" after development is done. (Integration)</li>
                     </ul>
                 </section>
 
@@ -210,7 +245,7 @@
                         <li>Keep it alive as short as possible and remember to clean up.</li>
                         <li>Make them independent.</li>
                         <li>Control the total number.</li>
-                        <li>Control the scope.</li>
+                        <li>Control the business scope.</li>
                         <li>Choose name wisely.</li>
                     </ul>
                 </section>
@@ -240,6 +275,7 @@
 				progress: true,
 				history: true,
 				center: true,
+                slideNumber: true,
 
 				transition: 'convex', // none/fade/slide/convex/concave/zoom
 
@@ -253,7 +289,6 @@
 					{ src: 'plugin/notes/notes.js', async: true }
 				]
 			});
-
 		</script>
 
 	</body>
